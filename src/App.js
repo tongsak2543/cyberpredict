@@ -8,7 +8,7 @@ import Index1 from "./page/index1";
 import Navbar1 from "./components/core/navbar1";
 import Day2024 from "./components/Day/day2024";
 import cyber from "./components/lh/cyber.ico"
-
+import CompareTime from "./components/Day/Ctime";
 function App() {
   useEffect(() => {
     document.title = "Cyber Predict"; // Set a default title for the app
@@ -28,6 +28,7 @@ function App() {
           <Route path="/" element={<Index1/>} />
           <Route path="/nav" element={<Navbar1/>} />
           <Route path="/day2024" element={<Day2024/>} />
+          <Route path="/Ctime" element={<CompareTime/>} />
         </Routes>
     </Router>
   );
