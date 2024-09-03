@@ -31,7 +31,7 @@ function Radar2024() {
                 const combinedData = [
                     { subject: 'การเงิน', Risk: riskData[0].financial, IM: imValues.im_fi, P: pValues.p_fi, fullMark: 25 },
                     { subject: 'การดำเนินการ', Risk: riskData[0].operational, IM: imValues.im_op, P: pValues.p_op, fullMark: 25 },
-                    { subject: 'บุคลกร', Risk: riskData[0].personnel, IM: imValues.ip_pe, P: pValues.p_pe, fullMark: 25 },
+                    { subject: 'บุคลกร', Risk: riskData[0].personnel, IM: imValues.im_pe, P: pValues.p_pe, fullMark: 25 },
                     { subject: 'การกำกับดูเเล', Risk: riskData[0].governance, IM: imValues.im_go, P: pValues.p_go, fullMark: 25 },
                     { subject: 'ขื่อเสียง', Risk: riskData[0].reputation, IM: imValues.im_re, P: pValues.p_re, fullMark: 25 },
                 ];

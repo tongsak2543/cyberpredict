@@ -9,6 +9,14 @@ import Navbar1 from "./components/core/navbar1";
 import Day2024 from "./components/Day/day2024";
 import cyber from "./components/lh/cyber.ico"
 import CompareTime from "./components/Day/Ctime";
+import formatDateToYYYYMMDD from "./components/function/time"
+import formattedDate from './components/function/time.js';
+
+
+// Use the formattedDate variable here
+console.log(formattedDate);
+
+
 function App() {
   useEffect(() => {
     document.title = "Cyber Predict"; // Set a default title for the app
@@ -18,6 +26,11 @@ function App() {
       favicon.href =cyber;//ชี้ไปยังไฟล์ Favicon ที่คุณต้องการ
     }
   }, []);
+
+  
+    
+
+  
 
   return (
     <Router>
@@ -29,8 +42,12 @@ function App() {
           <Route path="/nav" element={<Navbar1/>} />
           <Route path="/day2024" element={<Day2024/>} />
           <Route path="/Ctime" element={<CompareTime/>} />
+          <Route path="/ftime" element={<getCurrentDate/>} />
+          <Route path="/cstime" element={<formatDateToYYYYMMDD/>} />
+          
         </Routes>
     </Router>
+    
   );
 }
 

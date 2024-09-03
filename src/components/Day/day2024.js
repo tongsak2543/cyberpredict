@@ -1,9 +1,9 @@
 import React from 'react'
 
-function day2024() {
+function Day2024() {
   return (
     <div>hi my day</div>
   )
 }
 
-export default day2024
+export default Day2024
