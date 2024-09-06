@@ -11,7 +11,7 @@ import Pie2024 from '../graph/pie2024';
 import Radar2024 from '../graph/radar2024';
 import { Radar } from 'recharts';
 import { CenterFocusStrong } from '@mui/icons-material';
-import Selectt from '../core/select';
+import Selectt from '../Navbar/select';
 
 
 const Item = styled(Paper)(({ theme }) => ({
