@@ -11,42 +11,45 @@ import {
 } from "recharts";
 import axios from "axios";
 
-function Chart1() {
+
+function Chart1({selectedYear}) { // รับ selectedYear เป็น prop
   const [data, setData] = useState([]);
-
+  console.log("selectedYear:", selectedYear);
   useEffect(() => {
-    axios
-      .get("http://localhost:3001/line2024")
-      .then((response) => {
-        console.log("Data received:", response.data);
+    if (selectedYear) {
+      axios
+        .get(`http://localhost:3001/line/${selectedYear}`)
+        .then((response) => {
+          console.log("Data received:", response.data);
 
-        // Transform the data for multiple datasets
-        const transformedData = response.data.reduce((acc, item) => {
-          const months = Object.keys(item);
-          months.forEach((month) => {
-            if (!acc[month]) {
-              acc[month] = {};
-            }
-            acc[month] = {
-              ...acc[month],
-              [`DataLeak_${response.data.indexOf(item)}`]: item[month],
-            };
-          });
-          return acc;
-        }, {});
+          // Transform the data for multiple datasets
+          const transformedData = response.data.reduce((acc, item) => {
+            const months = Object.keys(item);
+            months.forEach((month) => {
+              if (!acc[month]) {
+                acc[month] = {};
+              }
+              acc[month] = {
+                ...acc[month],
+                [`DataLeak_${response.data.indexOf(item)}`]: item[month],
+              };
+            });
+            return acc;
+          }, {});
 
-        // Convert the transformed data object to an array
-        const dataArray = Object.keys(transformedData).map((month) => ({
-          name: month,
-          ...transformedData[month],
-        }));
+          // Convert the transformed data object to an array
+          const dataArray = Object.keys(transformedData).map((month) => ({
+            name: month,
+            ...transformedData[month],
+          }));
 
-        setData(dataArray);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+          setData(dataArray);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+  }, [selectedYear]); // เรียกใช้ effect เมื่อ selectedYear เปลี่ยนแปลง
 
   // Define colors and labels for each dataset
   const lineColors = {

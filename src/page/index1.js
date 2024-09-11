@@ -1,43 +1,29 @@
-// Index1.js
 import React, { useState } from 'react';
 // import Navbar1 from '../components/core/navbar1';
-import Y2025 from '../components/Year/2025';
-import Y2024 from '../components/Year/2024';
-import Y2023 from '../components/Year/2023';
-import Y2022 from '../components/Year/2022';
-import Y2021 from '../components/Year/2021';
+
 import Navbar1 from '../components/Navbar/navbar1';
 import SelectTopic from '../components/Navbar/select';
 
 function Index1() {
-  const [selectedContent, setSelectedContent] = useState(null);
+  // สร้าง state เก็บปีที่ถูกเลือก
+  const [selectedContent, setSelectedContent] = useState('2021'); // ค่าเริ่มต้นเป็น '2021'
 
-  const renderContent = () => {
-    switch (selectedContent) {
-      case '2025':
-        return <Y2025 />;
-      case '2024':
-        return <Y2024 />;
-      case '2023':
-        return <Y2023 />;
-      case '2022':
-        return <Y2022 />;
-      case '2022':
-        return <Y2021 />;
-      case '2021':
-        return <Y2021 />;
-      default:
-        return <div>Please select a topic</div>; // แสดงข้อความเมื่อไม่มีการเลือกหัวข้อ
-    }
+  const handleSelectTopic = (year) => {
+    setSelectedContent(year);
+    // คุณสามารถใช้ selectedContent สำหรับการเรียก API ที่นี่
+    console.log('Selected Year:', year);
+    // ตัวอย่างการเรียก API
+    // fetch(`your-api-endpoint/${year}`)
+    //   .then(response => response.json())
+    //   .then(data => console.log(data))
+    //   .catch(error => console.error('Error:', error));
   };
-
-
 
   return (
     <div>
-      <Navbar1 onSelectTopic={setSelectedContent} />
+      <Navbar1 onSelectTopic={handleSelectTopic} />
       <div style={{ padding: 20 }}>
-        {renderContent()}
+        <p>Selected Year: {selectedContent}</p> {/* แสดงค่าปีที่เลือก */}
       </div>
     </div>
   );
