@@ -12,13 +12,13 @@ import {
 import axios from "axios";
 
 
-function Chart1({selectedYear}) { // รับ selectedYear เป็น prop
+function Chart1({selectedContent}) { // รับ selectedContent เป็น prop
   const [data, setData] = useState([]);
-  console.log("selectedYear:", selectedYear);
+  console.log("selectedContent:", selectedContent);
   useEffect(() => {
-    if (selectedYear) {
+    if (selectedContent) {
       axios
-        .get(`http://localhost:3001/line/${selectedYear}`)
+        .get(`http://localhost:3001/line/${selectedContent}`)
         .then((response) => {
           console.log("Data received:", response.data);
 
@@ -49,7 +49,7 @@ function Chart1({selectedYear}) { // รับ selectedYear เป็น prop
           console.error("Error fetching data:", error);
         });
     }
-  }, [selectedYear]); // เรียกใช้ effect เมื่อ selectedYear เปลี่ยนแปลง
+  }, [selectedContent]); // เรียกใช้ effect เมื่อ selectedContent เปลี่ยนแปลง
 
   // Define colors and labels for each dataset
   const lineColors = {

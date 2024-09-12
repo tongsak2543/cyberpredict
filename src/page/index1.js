@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
-// import Navbar1 from '../components/core/navbar1';
-
 import Navbar1 from '../components/Navbar/navbar1';
-import SelectTopic from '../components/Navbar/select';
+import Chart1 from '../components/graph/chart2024'; // Import คอมโพเนนต์ Chart1
+import Pie2024 from '../components/graph/pie2024';
+
 
 function Index1() {
-  // สร้าง state เก็บปีที่ถูกเลือก
   const [selectedContent, setSelectedContent] = useState('2021'); // ค่าเริ่มต้นเป็น '2021'
 
   const handleSelectTopic = (year) => {
-    setSelectedContent(year);
-    // คุณสามารถใช้ selectedContent สำหรับการเรียก API ที่นี่
+    setSelectedContent(year); // อัพเดท selectedContent ตามปีที่เลือก
     console.log('Selected Year:', year);
-    // ตัวอย่างการเรียก API
-    // fetch(`your-api-endpoint/${year}`)
-    //   .then(response => response.json())
-    //   .then(data => console.log(data))
-    //   .catch(error => console.error('Error:', error));
   };
 
   return (
@@ -25,6 +18,11 @@ function Index1() {
       <div style={{ padding: 20 }}>
         <p>Selected Year: {selectedContent}</p> {/* แสดงค่าปีที่เลือก */}
       </div>
+      {/* ส่ง selectedContent ไปยัง Chart1 เป็น props */}
+      <Chart1 selectedContent={selectedContent} />
+      {/* วงกลม */}
+      <div><Pie2024 selectedContent={selectedContent} /></div>
+      
     </div>
   );
 }

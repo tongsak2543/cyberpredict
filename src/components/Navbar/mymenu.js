@@ -1,29 +1,30 @@
-import React, { useState } from 'react';
-import { Select, MenuItem } from '@mui/material';
+// import React, { useState } from 'react';
+// import { Select, MenuItem } from '@mui/material';
+// import Chart1 from '../graph/chart2024';
 
-const pages = ["2021", "2022", "2023", "2024", "2025",];
+// const pages = ["2021", "2022", "2023", "2024", "2025",];
 
-const MyMenu = () => {
-  const [selectedYear, setSelectedYear] = useState(""); // State เก็บค่าที่เลือก
+// const MyMenu = () => {
+//   const [selectedYear, setSelectedYear] = useState(""); // State เก็บค่าที่เลือก
 
-  return (
-    <>
-      <Select
-        value={selectedYear}
-        onChange={(event) => setSelectedYear(event.target.value)}  // ใช้ฟังก์ชันใน onChange
-        displayEmpty
-      >
-        {pages.map((page) => (
-          <MenuItem key={page} value={page}>
-            {page}
-          </MenuItem>
-        ))}
-      </Select>
+//   return (
+//     <>
+//       <Select
+//         value={selectedYear}
+//         onChange={(event) => setSelectedYear(event.target.value)}  // ใช้ฟังก์ชันใน onChange
+//         displayEmpty
+//       >
+//         {pages.map((page) => (
+//           <MenuItem key={page} value={page}>
+//             {page}
+//           </MenuItem>
+//         ))}
+//       </Select>
+//       {/* แสดงค่าที่ถูกเลือก */}
+//       <div>{selectedYear}</div>
       
-      {/* แสดงค่าที่ถูกเลือก */}
-      <div>{selectedYear}</div>
-    </>
-  );
-};
+//     </>
+//   );
+// };
 
-export default MyMenu;
+// export default MyMenu;
