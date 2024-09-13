@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import axios from 'axios';
+import servicesurl from '../../config'; // Assuming servicesurl is a function in config that returns the base URL
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Pie2024 = ({ selectedContent }) => { // รับ selectedContent จาก props
+const Pie2024 = ({ selectedContent }) => {
   const [data, setData] = useState({
     labels: [],
     datasets: [
@@ -33,14 +34,15 @@ const Pie2024 = ({ selectedContent }) => { // รับ selectedContent จา�
     ],
   });
 
+  const url = servicesurl(); // Base URL from config
+
   useEffect(() => {
-    if (selectedContent) { // ตรวจสอบว่ามี selectedContent ก่อนเรียก API
+    if (selectedContent) {
       axios
-        .get(`http://localhost:3001/pie/${selectedContent}`) // ใช้ selectedContent ในการเรียก API
+        .get(`${url}/pie/${selectedContent}`)
         .then((response) => {
           console.log('Data received:', response.data);
 
-          // แปลงข้อมูลที่ได้รับ
           const labels = response.data.map((item) => item.type);
           const values = response.data.map((item) => item.total);
 
@@ -75,13 +77,13 @@ const Pie2024 = ({ selectedContent }) => { // รับ selectedContent จา�
           console.error('Error fetching data:', error);
         });
     }
-  }, [selectedContent]); // เรียก useEffect เมื่อ selectedContent เปลี่ยน
+  }, [selectedContent, url]); // Added `url` in the dependency array in case it changes
 
   return (
     <div style={{ textAlign: 'center', width: '100%' }}>
       <h2>ทำนายสถิติการโจมตีทางไซเบอร์</h2>
-      <div style={{ width: '60%', height: '60%', margin: '0 auto' }}>
-        <Pie data={data} style={{ width: '100%', height: '100%' }} />
+      <div style={{ width: '50%', height: '50%', margin: '0 auto' }}>
+        <Pie data={data} style={{ width: '50%', height: '50%' }} />
       </div>
     </div>
   );
