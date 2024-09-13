@@ -10,15 +10,16 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import axios from "axios";
-
+import servicesurl from "../../config";
 
 function Chart1({selectedContent}) { // รับ selectedContent เป็น prop
   const [data, setData] = useState([]);
   console.log("selectedContent:", selectedContent);
+  const url = servicesurl();
   useEffect(() => {
     if (selectedContent) {
       axios
-        .get(`http://localhost:3001/line/${selectedContent}`)
+        .get(`${url}/line/${selectedContent}`)
         .then((response) => {
           console.log("Data received:", response.data);
 
