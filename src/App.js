@@ -14,6 +14,7 @@ import formattedDate from './components/function/time.js';
 import RiskTable from './components/table/risktable';
 import MyMenu from "./components/Navbar/mymenu.js";
 import Chart1 from "./components/graph/chart2024.js";
+import Daypage from "./components/Day/Daypage.js";
 // Use the formattedDate variable here
 console.log(formattedDate);
 
@@ -48,6 +49,7 @@ function App() {
           <Route path="/risktable" element={<RiskTable/>} />  
           <Route path="/mymenu" element={<MyMenu/>} />     
           <Route path="/chart2024" element={<Chart1/>} />
+          <Route path="/day" element={<Daypage/>} />
             
         </Routes>
     </Router>

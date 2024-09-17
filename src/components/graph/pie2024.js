@@ -43,8 +43,9 @@ const Pie2024 = ({ selectedContent }) => {
         .then((response) => {
           console.log('Data received:', response.data);
 
-          const labels = response.data.map((item) => item.type);
-          const values = response.data.map((item) => item.total);
+          const rawData = response.data[0]; // Assuming the data is an array of one object
+          const labels = ['p_fi', 'p_go', 'p_op', 'p_pe', 'p_re']; // Corresponding labels for the data
+          const values = [rawData.p_fi, rawData.p_go, rawData.p_op, rawData.p_pe, rawData.p_re]; // Extracting values
 
           setData({
             labels: labels,

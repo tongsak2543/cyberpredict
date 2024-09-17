@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
+import servicesurl from '../../config';
 
-function Radar2024() {
+function Radar2024({ selectedContent }) {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const url = servicesurl();
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const [riskResponse, imResponse, pResponse] = await Promise.all([
-                    fetch('http://localhost:3001/risk2024'),
-                    fetch('http://localhost:3001/im2024'),
-                    fetch('http://localhost:3001/p2024')
+                    fetch(`${url}/risk/${selectedContent}`),
+                    fetch(`${url}/im/${selectedContent}`),
+                    fetch(`${url}/pie/${selectedContent}`)
                 ]);
 
                 if (!riskResponse.ok || !imResponse.ok || !pResponse.ok) {
@@ -31,9 +33,9 @@ function Radar2024() {
                 const combinedData = [
                     { subject: 'การเงิน', Risk: riskData[0].financial, IM: imValues.im_fi, P: pValues.p_fi, fullMark: 25 },
                     { subject: 'การดำเนินการ', Risk: riskData[0].operational, IM: imValues.im_op, P: pValues.p_op, fullMark: 25 },
-                    { subject: 'บุคลกร', Risk: riskData[0].personnel, IM: imValues.im_pe, P: pValues.p_pe, fullMark: 25 },
-                    { subject: 'การกำกับดูเเล', Risk: riskData[0].governance, IM: imValues.im_go, P: pValues.p_go, fullMark: 25 },
-                    { subject: 'ขื่อเสียง', Risk: riskData[0].reputation, IM: imValues.im_re, P: pValues.p_re, fullMark: 25 },
+                    { subject: 'บุคลากร', Risk: riskData[0].personnel, IM: imValues.im_pe, P: pValues.p_pe, fullMark: 25 },
+                    { subject: 'การกำกับดูแล', Risk: riskData[0].governance, IM: imValues.im_go, P: pValues.p_go, fullMark: 25 },
+                    { subject: 'ชื่อเสียง', Risk: riskData[0].reputation, IM: imValues.im_re, P: pValues.p_re, fullMark: 25 },
                 ];
 
                 setData(combinedData);
@@ -45,16 +47,16 @@ function Radar2024() {
         };
 
         fetchData();
-    }, []);
+    }, [selectedContent]); // เพิ่ม selectedContent ใน dependency array
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
 
     const chartStyle = {
         display: 'flex',
-        justifyContent:"center",
+        justifyContent: "center",
         alignItems: 'center',
-        height: '100%', // Adjust as needed
+        height: '100%', // ปรับตามที่ต้องการ
         width: '100%'
     };
 

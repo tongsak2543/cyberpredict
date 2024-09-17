@@ -1,5 +1,6 @@
 // Navbar1.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,11 +13,13 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Button } from '@mui/material';
+import Daypage from '../Day/Daypage';
 
-const pages = ["2021", "2022", "2023", "2024", "2025"];
+const pages = ["2021", "2022", "2023", "2024", "2025", "Go Day Page"];
 
 function Navbar1({ onSelectTopic }) {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -26,7 +29,11 @@ function Navbar1({ onSelectTopic }) {
   };
 
   const handleMenuItemClick = (page) => {
-    onSelectTopic(page);
+    if (page === "Go Day Page") {
+      navigate('/day'); // Redirect to the "day" page
+    } else {
+      onSelectTopic(page); // Keep the same logic for other pages
+    }
     setDrawerOpen(false);
   };
 
@@ -65,7 +72,7 @@ function Navbar1({ onSelectTopic }) {
           {pages.map((page) => (
             <Button
               key={page}
-              onClick={() => onSelectTopic(page)}
+              onClick={() => handleMenuItemClick(page)}
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
               {page}
