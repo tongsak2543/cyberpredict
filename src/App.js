@@ -15,6 +15,14 @@ import RiskTable from './components/table/risktable';
 import MyMenu from "./components/Navbar/mymenu.js";
 import Chart1 from "./components/graph/chart2024.js";
 import Daypage from "./components/Day/Daypage.js";
+import Chartday from "./components/graphday/chartday.js";
+import Day1 from "./components/graphday/typeday1.js";
+import Day2 from "./components/graphday/typeday2.js";
+import Day3 from "./components/graphday/typeday3.js";
+import Day4 from "./components/graphday/typeday4.js";
+import Day5 from "./components/graphday/typeday5.js";
+import Day6 from "./components/graphday/typeday6.js";
+
 // Use the formattedDate variable here
 console.log(formattedDate);
 
@@ -45,11 +53,18 @@ function App() {
           <Route path="/day2024" element={<Day2024/>} />
           <Route path="/Ctime" element={<CompareTime/>} />
           <Route path="/ftime" element={<getCurrentDate/>} />
-          <Route path="/cstime" element={<formatDateToYYYYMMDD/>} />
           <Route path="/risktable" element={<RiskTable/>} />  
           <Route path="/mymenu" element={<MyMenu/>} />     
           <Route path="/chart2024" element={<Chart1/>} />
           <Route path="/day" element={<Daypage/>} />
+          <Route path="/chartday" element={<Chartday/>} />
+          <Route path="/typeday1" element={<Day1/>} />
+          <Route path="/typeday2" element={<Day2/>} />
+          <Route path="/typeday3" element={<Day3/>} />
+          <Route path="/typeday4" element={<Day4/>} />
+          <Route path="/typeday5" element={<Day5/>} />
+          <Route path="/typeday6" element={<Day6/>} />
+          
             
         </Routes>
     </Router>

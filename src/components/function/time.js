@@ -6,12 +6,9 @@ function formatDateToYYYYMMDD(date) {
 	return `${yyyy}-${mm}-${dd}`;
 }
 
-// Get the current date
-const currentDate = new Date();
-const formattedDate = formatDateToYYYYMMDD(currentDate);
+// Export the function instead of the formatted date
+export default function formattedDate() {
+	const currentDate = new Date();
+	return formatDateToYYYYMMDD(currentDate); // Call the format function with the current date
+}
 
-
-// console.log({formattedDate});
-
-// Export the formatted date if needed
-export default formattedDate;
