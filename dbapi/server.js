@@ -386,7 +386,63 @@ app.get("/pie/:year", async (req, res) => {
   }
 });
 
+app.get("/risk/:year", async (req, res) => {
+  const year = req.params.year; // รับค่าปีจากพารามิเตอร์ URL
+  try {
+    connection.query(
+      "SELECT `year`,`financial`,`operational`,`personnel`,`governance`,`reputation` FROM `riskyearsql` WHERE `year` =?;",
+      [year], // ส่ง year เป็นพารามิเตอร์ให้กับ query
+      (err, results, field) => {
+        if (err) {
+          console.log(err);
+          return res.status(400).send();
+        }
+        res.status(200).json(results);
+      }
+    );
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send();
+  }
+});
 
+app.get("/im/:year", async (req, res) => {
+  const year = req.params.year; // รับค่าปีจากพารามิเตอร์ URL
+  try {
+    connection.query(
+      "SELECT `im_fi`,`im_op`,`im_pe`,`im_go`,`im_re`  FROM `riskyearsql` WHERE `year`=?;",[year],
+      (err, results, field) => {
+        if (err) {
+          console.log(err);
+          return res.status(400).send();
+        }
+        res.status(200).json(results);
+      }
+    );
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send();
+  }
+});
+
+app.get("/pie/:year", async (req, res) => {
+  const year = req.params.year; // รับค่าปีจากพารามิเตอร์ URL
+  try {
+    connection.query(
+      "SELECT `p_fi`,`p_op`,`p_pe`,`p_go`,`p_re`from riskyearsql WHERE `year`=?;",[year],
+      (err, results, field) => {
+        if (err) {
+          console.log(err);
+          return res.status(400).send();
+        }
+        res.status(200).json(results);
+      }
+    );
+  } catch (err) {
+    console.log(err);
+    return res.status(500).send();
+  }
+});
 
 app.listen(3001, () => console.log("server is running on port 3001"));
 
