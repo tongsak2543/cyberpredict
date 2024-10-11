@@ -14,7 +14,7 @@ import formattedDate from './components/function/time.js';
 import RiskTable from './components/table/risktable';
 import MyMenu from "./components/Navbar/mymenu.js";
 import Chart1 from "./components/graph/chart2024.js";
-
+import Daypage from "./components/Day/Daypage.js";
 import Chartday from "./components/graphday/chartday.js";
 import Day1 from "./components/graphday/typeday1.js";
 import Day2 from "./components/graphday/typeday2.js";

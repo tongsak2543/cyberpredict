@@ -12,4 +12,4 @@ function Daypage() {
   )
 }
 
-export default Daypage
+export default Daypage;
