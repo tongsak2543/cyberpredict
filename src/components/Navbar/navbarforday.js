@@ -14,10 +14,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Button } from '@mui/material';
 
+const pages = ["Home Page"];
 
-const pages = ["2021", "2022", "2023", "2024", "2025", "Go Day Page"];
-
-function Navbar1({ onSelectTopic }) {
+function Navbarforday() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -29,10 +28,8 @@ function Navbar1({ onSelectTopic }) {
   };
 
   const handleMenuItemClick = (page) => {
-    if (page === "Go Day Page") {
-      navigate('/day'); // Redirect to the "day" page
-    } else {
-      onSelectTopic(page); // Keep the same logic for other pages
+    if (page === "Home Page") {
+      navigate('/'); // Redirect to the "day" page
     }
     setDrawerOpen(false);
   };
@@ -99,4 +96,4 @@ function Navbar1({ onSelectTopic }) {
   );
 }
 
-export default Navbar1;
+export default Navbarforday;

@@ -15,8 +15,10 @@ import servicesurl from "../../config";
 function Chart1({selectedContent}) { // รับ selectedContent เป็น prop
   const [data, setData] = useState([]);
   console.log("selectedContent:", selectedContent);
-  const url = servicesurl();
+ 
+
   useEffect(() => {
+    const url = servicesurl();
     if (selectedContent) {
       axios
         .get(`${url}/line/${selectedContent}`)
@@ -78,16 +80,16 @@ function Chart1({selectedContent}) { // รับ selectedContent เป็น p
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" padding={{ left: 20, right: 0 }} />
         <YAxis
-          tick={{ fontSize: 12, fill: "black" }}
+          tick={{ fontSize: 12}}
           label={{
             value: "ระดับความรุนเเรง",
             angle: -90,
             position: "insideLeft",
             offset: -10,
           }}
-          domain={[0, 10000]}
-          tickCount={12}
-          ticks={[0, 500, 1000, 1500, 2000, 2500, 3000,3500,4000,4500,5000,5500,6000,6500,7000,7500,8000,8500,9000,9500,10000]}
+          domain={[0, 4000]} // ค่าสูงสุดที่ 20000
+          tickCount={8}       // 0 ถึง 20000 จะแสดงทั้งหมด 21 จุด (0, 1000, ..., 20000)
+          ticks={[0,5000,10000,15000,20000,25000,30000,35000,40000]} // แบ่งเป็นช่วงทุกๆ 1000
         />
         <Tooltip />
         <Legend />

@@ -32,6 +32,7 @@ function RiskTable() {
                         </TableRow>
                     ))}
                 </TableBody>
+                <p align='center'>Likelihood</p>  
             </Table>
         </TableContainer>
     );

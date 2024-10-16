@@ -66,9 +66,9 @@ function Day2() {
 
   return (
     <div>
-      <h3>Next Date: {nextDate}</h3> {/* แสดงวันที่ถัดไป */}
+      <h3>Date: {nextDate}</h3> {/* แสดงวันที่ถัดไป */}
       {apiData.length > 0 ? (
-        <BarChart width={1000} height={400} data={apiData}>
+        <BarChart width={900} height={400} data={apiData}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" tick={{ fontSize: 12 }} interval={0} angle={-45} textAnchor="end" height={55} />
           <YAxis />

@@ -3,15 +3,12 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import risk from '../lh/risk.jpg';
+import risk from '../lh/risknew.png';
 import des from '../lh/des.jpg';
 import TM from '../core/time';
 import Chart1 from '../graph/chart2024';
 import Pie2024 from '../graph/pie2024';
 import Radar2024 from '../graph/radar2024';
-import { Radar } from 'recharts';
-import { CenterFocusStrong } from '@mui/icons-material';
-import Selectt from '../Navbar/select';
 import Navi from '../core/naviga';
 
 

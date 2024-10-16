@@ -22,7 +22,7 @@ import Day3 from "./components/graphday/typeday3.js";
 import Day4 from "./components/graphday/typeday4.js";
 import Day5 from "./components/graphday/typeday5.js";
 import Day6 from "./components/graphday/typeday6.js";
-
+import Pieday from "./components/graphday/pieday.js";
 // Use the formattedDate variable here
 console.log(formattedDate);
 
@@ -64,6 +64,8 @@ function App() {
           <Route path="/typeday4" element={<Day4/>} />
           <Route path="/typeday5" element={<Day5/>} />
           <Route path="/typeday6" element={<Day6/>} />
+          <Route path="/pieday" element={<Pieday/>} />
+
           
             
         </Routes>
